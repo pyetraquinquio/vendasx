@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consultar Vendas</title>
+  </head>
+  <body>
+    <h1>Consultar Vendas com form</h1>
+    <label for="vendedor_id">ID do Vendedor:</label>
+    <input type="text" id="vendedor_id" />
+    <button onclick="consultarVendedor()">Consultar Vendedor</button>
+    <div id="resultado">
+      <!-- Resultado da consulta será exibido aqui -->
+    </div>
+    <script>
+      async function consultarVendedor() {
+        // Obtém o valor do campo e remove espaços em branco do início e do fim
+        const venda_id = document.getElementById("vendedor_id").value.trim();
+        if (venda_id === "") {
+          alert("Favor inserir ID no campo para consulta");
+          document.getElementById("vendedor_id").focus(); // Dá foco de volta ao campo de entrada
+        } else {
+          try {
+            const response = await fetch(`/vendedores/${venda_id}`); // Faz uma requisição para a rota "/vendas/:id" no servidor
+            if (response.status === 404) {
+              document.getElementById("resultado").innerHTML =
+                "<p>Venda não encontrada</p>";
+            } else {
+              const data = await response.json(); // Converte a resposta para JSON
+              document.getElementById("resultado").innerHTML = `
+                <h2>Detalhes da Venda</h2>
+                <form>
+
+                  <label for="vendedor_id">ID do Vendedor:</label>
+                  <input type="text" id="vendedor_id" value="${data.vendedor_id}" disabled><br>
+
+                  <label for="valor">Valor:</label>
+                  <input type="text" id="nome" value="${data.nome}" disabled><br>
+
+                  <label for="data_venda">Data da Venda:</label>
+                  <input type="text" id="data_regiao" value="${data.regiao}" disabled><br>
+
+                
+                </form>`
+
+
+
+                '<br> <button><a href= "/">Voltar</a></button>'
+            }
+          } catch (error) {
+            console.error("Erro ao consultar venda:", error);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

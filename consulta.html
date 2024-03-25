@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta Integrada</title>
+</head>
+<body>
+    <h1>Consulta Integrada</h1>
+    <label for="consul">ID da Venda:</label>
+    <input type="text" id="consul" />
+    <button onclick="consultaint()">Consulta Int</button>
+    <div id="resultado">
+      <!-- Resultado da consulta será exibido aqui -->
+    </div>
+    <script>
+      async function consultaint() {
+        // Obtém o valor do campo e remove espaços em branco do início e do fim
+        const consul = document.getElementById("consul").value.trim();
+        if (consul === "") {
+          alert("Favor inserir ID no campo para consulta");
+          document.getElementById("consul").focus(); // Dá foco de volta ao campo de entrada
+        } else {
+          try {
+            const response = await fetch(`/consulint/${consul}`); 
+            if (response.status === 404) {
+              document.getElementById("resultado").innerHTML =
+                "<p>não encontrada</p>";
+            } else {
+              const data = await response.json(); // Converte a resposta para JSON
+              document.getElementById("resultado").innerHTML = `
+                <h2>Detalhes da Consulta Integrada</h2>
+                <form>
+                <label for="venda_id">Id da venda:</label>
+                  <input type="text" id="venda_id" value="${data.venda_id}" disabled><br>
+                  <label for="nomecli">Nome do Cliente:</label>
+                  <input type="text" id="nomecli" value="${data.nomecli}" disabled><br>
+                  <label for="nomevend">Nome do Vendedor:</label>
+                  <input type="text" id="nomevend" value="${data.nomevend}" disabled><br>
+                  <label for="regiao">Região:</label>
+                  <input type="text" id="regiao" value="${data.regiao}" disabled><br>
+                  <label for="data_venda">Data da venda:</label>
+                  <input type="text" id="data_venda" value="${data.data_venda}" disabled><br>
+                  <label for="valor">Valor:</label>
+                  <input type="text" id="valor" value="${data.valor}" disabled><br>
+                </form>
+                <br>
+                <button ><a href="/">Voltar</a></button>`
+            }
+          } catch (error) {
+            console.error("Erro ao apresentar a consulta integrada:", error);
+          }
+        }
+      }
+    </script>
+</body>
+</html>

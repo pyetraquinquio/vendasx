@@ -8,6 +8,10 @@ const app = express();
 // Define a porta em que o servidor irá escutar
 const port = 3000;
 
+app.use(express.json())
+
+app.use(express.static("public"))
+
 // Configurações de conexão com o banco de dados
 const config = {
   server: "127.0.0.1", // Nome do servidor
@@ -112,6 +116,17 @@ app.get("/vendedores", async (req, res) => {
     }
   });
 
+  app.get("/consulint", async (req, res) => {
+    try {
+      const query = "SELECT * FROM visao1;"; // Consulta SQL para selecionar todas as vendas
+      const sales = await executeQuery(query); // Executa a consulta SQL e aguarda os resultados
+      res.sendFile(__dirname + "/consulta.html"); // Retorna as vendas em formato JSON
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send(err.message);
+    }
+  });
+
 // Rota para obter uma venda pelo ID em formato JSON
 app.get("/clientes/:id", async (req, res) => {
     try {
@@ -154,6 +169,22 @@ app.get("/vendedores/:id", async (req, res) => {
       const sales = await executeQuery(query); // Executa a consulta SQL e aguarda os resultados
       if (sales.length === 0) {
         res.status(404).send("Vendedor não encontrado");
+      } else {
+        res.json(sales[0]); // Retorna a venda em formato JSON (supondo que apenas uma venda corresponda ao ID)
+      }
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send(err.message);
+    }
+  });
+
+  app.get("/consulint/:id", async (req, res) => {
+    try {
+      const id = req.params.id; // Obtém o ID da venda da URL
+      const query = `SELECT * FROM visao1 WHERE venda_id = ${id};`; // Consulta SQL para selecionar a venda pelo ID
+      const sales = await executeQuery(query); // Executa a consulta SQL e aguarda os resultados
+      if (sales.length === 0) {
+        res.status(404).send(" não encontrada");
       } else {
         res.json(sales[0]); // Retorna a venda em formato JSON (supondo que apenas uma venda corresponda ao ID)
       }

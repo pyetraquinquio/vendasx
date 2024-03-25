@@ -8,6 +8,10 @@ const app = express();
 // Define a porta em que o servidor irá escutar
 const port = 3000;
 
+app.use(express.json()); //configuração do middleware para fazer o parsing do corpo da requisição Json 
+
+app.use(express.static("public")); //configuração para servir arquivos estáticos
+
 // Configurações de conexão com o banco de dados
 const config = {
   server: "127.0.0.1", // Nome do servidor

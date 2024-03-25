@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Consultar Venda</title>
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados Cliente</title>
+</head>
+<body>
     <h1>Consultar Cliente</h1>
     <label for="clienteId">ID da Venda:</label>
     <input type="text" id="clienteId" />
@@ -22,7 +22,7 @@
           document.getElementById("clienteId").focus(); // Dá foco de volta ao campo de entrada
         } else {
           try {
-            const response = await fetch(`/clientes/${clienteId}`); // Faz uma requisição para a rota "/vendas/:id" no servidor
+            const response = await fetch(`/clientes/${clienteId}`); 
             if (response.status === 404) {
               document.getElementById("resultado").innerHTML =
                 "<p>Cliente não encontrada</p>";
@@ -46,10 +46,10 @@
                 <button ><a href="/">Voltar</a></button>;`
             }
           } catch (error) {
-            console.error("Erro ao consultar venda:", error);
+            console.error("Erro ao consultar cliente:", error);
           }
         }
       }
     </script>
-  </body>
+</body>
 </html>

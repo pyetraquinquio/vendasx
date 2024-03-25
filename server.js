@@ -81,7 +81,7 @@ app.get("/clientes", async (req, res) => {
   try {
     const query = "SELECT * FROM clientes;"; // Consulta SQL para selecionar todos os produtos
     const products = await executeQuery(query); // Executa a consulta SQL e aguarda os resultados
-    res.json(products); // Retorna os produtos em formato JSON
+    res.sendFile(__dirname + "/cliente.html");// Retorna os produtos em formato JSON
   } catch (err) {
     console.error(err.message);
     res.status(500).send(err.message);
@@ -93,7 +93,7 @@ app.get("/vendas", async (req, res) => {
   try {
     const query = "SELECT * FROM vendas;"; // Consulta SQL para selecionar todas as vendas
     const sales = await executeQuery(query); // Executa a consulta SQL e aguarda os resultados
-    res.json(sales); // Retorna as vendas em formato JSON
+    res.sendFile(__dirname + "/venda.html"); // Retorna as vendas em formato JSON
   } catch (err) {
     console.error(err.message);
     res.status(500).send(err.message);
@@ -105,7 +105,7 @@ app.get("/vendedores", async (req, res) => {
     try {
       const query = "SELECT * FROM vendedores;"; // Consulta SQL para selecionar todas as vendas
       const sales = await executeQuery(query); // Executa a consulta SQL e aguarda os resultados
-      res.json(sales); // Retorna as vendas em formato JSON
+      res.sendFile(__dirname + "/vendedor.html"); // Retorna as vendas em formato JSON
     } catch (err) {
       console.error(err.message);
       res.status(500).send(err.message);
@@ -147,7 +147,7 @@ app.get("/vendas/:id", async (req, res) => {
 });
 
 // Rota para obter uma venda pelo ID em formato JSON
-app.get("/vendedor/:id", async (req, res) => {
+app.get("/vendedores/:id", async (req, res) => {
     try {
       const id = req.params.id; // Obtém o ID da venda da URL
       const query = `SELECT * FROM vendedores WHERE vendedor_id = ${id};`; // Consulta SQL para selecionar a venda pelo ID

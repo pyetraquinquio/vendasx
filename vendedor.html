@@ -30,7 +30,6 @@
               const data = await response.json(); // Converte a resposta para JSON
               document.getElementById("resultado").innerHTML = `
                 <h2>Detalhes da Venda</h2>
-                <form>
 
                   <label for="vendedor_id">ID do Vendedor:</label>
                   <input type="text" id="vendedor_id" value="${data.vendedor_id}" disabled><br>

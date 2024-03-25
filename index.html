@@ -11,72 +11,16 @@
     <br>
     <h1>Clientes</h1>
     <ul id="clientes"></ul>
-    <!-- Lista de produtos será exibida aqui -->
-    <button a href="/cliente.html"></a>Consultar Clientes</button>
-    <!-- <script>
-      async function carregarProdutos() {
-        try {
-          const response = await fetch("/clientes"); // Faz uma requisição para a rota "/produtos" no servidor
-          const data = await response.json(); // Converte a resposta para JSON
-          const produtosElement = document.getElementById("clientes"); // Obtém a referência da lista de produtos
-          clientesElement.innerHTML = ""; // Limpa a lista de produtos
-          data.forEach((cli) => {
-            // Itera sobre os produtos retornados
-            const li = document.createElement("li"); // Cria um elemento <li>
-            li.textContent = `${product.name}: ${product.price}`; // Define o texto do elemento <li>
-            produtosElement.appendChild(li); // Adiciona o elemento <li> à lista de produtos
-          });
-        } catch (error) {
-          console.error("Erro ao carregar clientes:", error);
-        }
-      }
-    </script> -->
+    
+    <button><a href="cliente.html">Consultar Clientes</a></button>
 
     <h1>Vendas</h1>
     <ul id="vendas"></ul>
-    <!-- Lista de vendas será exibida aqui -->
-    <button a href="/venda.html"></a>Consultar Vendas</button>
-    <!-- <script>
-      async function carregarVendas() {
-        try {
-          const response = await fetch("/vendas"); // Faz uma requisição para a rota "/vendas" no servidor
-          const data = await response.json(); // Converte a resposta para JSON
-          const vendasElement = document.getElementById("vendas"); // Obtém a referência da lista de vendas
-          vendasElement.innerHTML = ""; // Limpa a lista de vendas
-          data.forEach((sale) => {
-            // Itera sobre as vendas retornadas
-            const li = document.createElement("li"); // Cria um elemento <li>
-            li.textContent = `Venda # ${sale.VendaID}: Data da Venda #${sale.DataVenda}, Cliente: ${sale.Cliente}, Item: ${sale.Item}, Quantidade: ${sale.Quantidade}, Preco: ${sale.Preco} `; // Define o texto do elemento <li>
-            vendasElement.appendChild(li); // Adiciona o elemento <li> à lista de vendas
-          });
-        } catch (error) {
-          console.error("Erro ao carregar vendas:", error);
-        }
-      }
-    </script> -->
+    <button ><a href="venda.html">Consultar Vendas</a></button>
 
     <h1>Vendedores</h1>
     <ul id="vendedores"></ul>
-    <!-- Lista de vendas será exibida aqui -->
-    <button a href="/vendedor.html"></a>Consultar Vendedores</button>
-    <!-- <script>
-      async function carregarVendas() {
-        try {
-          const response = await fetch("/vendedores"); // Faz uma requisição para a rota "/vendas" no servidor
-          const data = await response.json(); // Converte a resposta para JSON
-          const vendasElement = document.getElementById("vendedores"); // Obtém a referência da lista de vendas
-          vendedoresElement.innerHTML = ""; // Limpa a lista de vendas
-          data.forEach((vend) => {
-            // Itera sobre as vendas retornadas
-            const li = document.createElement("li"); // Cria um elemento <li>
-            li.textContent = `Venda # ${sale.VendaID}: Data da Venda #${sale.DataVenda}, Cliente: ${sale.Cliente}, Item: ${sale.Item}, Quantidade: ${sale.Quantidade}, Preco: ${sale.Preco} `; // Define o texto do elemento <li>
-            vendasElement.appendChild(li); // Adiciona o elemento <li> à lista de vendas
-          });
-        } catch (error) {
-          console.error("Erro ao carregar vendedores:", error);
-        }
-      }
-    </script> -->
+    <button ><a href="vendedor.html">Consultar Vendedores</a></button>
     </script>
   </body>
 </html>

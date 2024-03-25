@@ -8,6 +8,7 @@ const app = express();
 // Define a porta em que o servidor irá escutar
 const port = 3000;
 
+
 // Configurações de conexão com o banco de dados
 const config = {
   server: "127.0.0.1", // Nome do servidor

@@ -8,9 +8,9 @@ const app = express();
 // Define a porta em que o servidor irá escutar
 const port = 3000;
 
-app.use(express.json())
+app.use(express.json());
 
-app.use(express.static("public"))
+app.use(express.static("public"));
 
 // Configurações de conexão com o banco de dados
 const config = {

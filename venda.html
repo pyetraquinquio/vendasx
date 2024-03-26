@@ -4,16 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Consultar Vendas</title>
-    <link rel="stylesheet" type="text/css" href="public/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
   </head>
   <body>
-    <h1>Consultar Vendas com form</h1>
+    <header class="header">
+    <h1>Consultar Vendas</h1>
+  </header>
+  <br>
+  <br>
+<div class="div">
     <label for="venda_id">ID da Venda:</label>
     <input type="text" id="venda_id" />
-    <button onclick="consultarVenda()">Consultar Vendas</button>
-    <div id="resultado">
+    <br>
+    <br>
+    <button class="button" onclick="consultarVenda()">Consultar Venda</button>
+    <br>
+    <br>
+    <br>
+    <div class="form" id="resultado">
       <!-- Resultado da consulta será exibido aqui -->
     </div>
+</div>
     <script>
       async function consultarVenda() {
         // Obtém o valor do campo e remove espaços em branco do início e do fim
@@ -32,23 +43,30 @@
               document.getElementById("resultado").innerHTML = `
                 <h2>Detalhes da Venda</h2>
                 <form>
+                  <div class="divform">
                   <label for="venda_id">ID da Venda:</label>
                   <input type="text" id="venda_id" value="${data.venda_id}" disabled><br>
-
+                  </div>
+                  <div class="divform">
                   <label for="cliente_id">ID do Cliente:</label>
                   <input type="text" id="cliente_id" value="${data.cliente_id}" disabled><br>
-
+                  </div>
+                  <div class="divform">
                   <label for="vendedor_id">ID do Vendedor:</label>
                   <input type="text" id="vendedor_id" value="${data.vendedor_id}" disabled><br>
-
+                  </div>
+                  <div class="divform">
                   <label for="valor">Valor:</label>
                   <input type="text" id="valor" value="${data.valor}" disabled><br>
-
+                  </div>
+                  <div class="divform">
                   <label for="data_venda">Data da Venda:</label>
                   <input type="text" id="data_venda" value="${data.data_venda}" disabled><br>
-
+                  </div>
+                  <div class="divform">
                   <label for="categoria">Categoria:</label>
                   <input type="text" id="categoria" value="${data.categoria}" disabled><br>
+                  </div>
                 </form>
 
 

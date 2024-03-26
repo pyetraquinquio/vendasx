@@ -4,16 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dados Cliente</title>
-    <link rel="stylesheet" type="text/css" href="public/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
-    <h1>Consultar Cliente</h1>
-    <label for="clienteId">ID da Venda:</label>
+  <header class="header">
+    <h1>Consultar Clientes</h1>
+  </header>
+  <br>
+  <br>
+<div class="div">
+    <label for="clienteId">ID do Cliente:</label>
     <input type="text" id="clienteId" />
-    <button onclick="consultarCliente()">Consultar Cliente</button>
-    <div id="resultado">
+    <br>
+    <br>
+    <button class="button" onclick="consultarCliente()">Consultar Cliente</button>
+    <br>
+    <br>
+    <br>
+    <div class="form" id="resultado">
       <!-- Resultado da consulta será exibido aqui -->
     </div>
+
+  </div>
     <script>
       async function consultarCliente() {
         // Obtém o valor do campo e remove espaços em branco do início e do fim
@@ -26,23 +38,36 @@
             const response = await fetch(`/clientes/${clienteId}`); 
             if (response.status === 404) {
               document.getElementById("resultado").innerHTML =
-                "<p>Cliente não encontrada</p>";
+                "<p>Cliente não encontrado</p>";
             } else {
               const data = await response.json(); // Converte a resposta para JSON
               document.getElementById("resultado").innerHTML = `
-                <h2>Detalhes da Cliente</h2>
+                <h2>Detalhes do Cliente</h2>
+                <br>
                 <form>
+                  <div class="divform">
                   <label for="cliente_id">ID do Cliente:</label>
                   <input type="text" id="cliente_id" value="${data.cliente_id}" disabled><br>
+                  </div>
+                  
+                  <div class="divform">
                   <label for="nome">Nome do Cliente:</label>
                   <input type="text" id="nome" value="${data.nome}" disabled><br>
+                  </div>
+                  <div class="divform">
                   <label for="idade">Idade do Cliente:</label>
                   <input type="text" id="idade" value="${data.idade}" disabled><br>
+                  </div>
+                  <div class="divform">
                   <label for="sexo">Sexo do Cliente:</label>
                   <input type="text" id="sexo" value="${data.sexo}" disabled><br>
+                  </div>
+                  <div class="divform">
                   <label for="cidade">Cidade:</label>
                   <input type="text" id="cidade" value="${data.cidade}" disabled><br>
+                  </div>
                 </form>
+                <br>
                 <br>
                 <button ><a href="/">Voltar</a></button>`
             }

@@ -4,16 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="public/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
-    <h1>Consultar Vendas com form</h1>
+  <header class="header">
+    <h1>Consultar Vendedores</h1>
+  </header>
+  <br>
+  <br>
+<div class="div">
     <label for="vendedor_id">ID do Vendedor:</label>
     <input type="text" id="vendedor_id" />
-    <button onclick="consultarVendedor()">Consultar Vendedor</button>
-    <div id="resultado">
+    <br>
+    <br>
+    <button class="button" onclick="consultarVendedor()">Consultar Vendedor</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="form" id="resultado">
       <!-- Resultado da consulta será exibido aqui -->
     </div>
+</div>
     <script>
       async function consultarVendedor() {
         // Obtém o valor do campo e remove espaços em branco do início e do fim
@@ -26,21 +38,23 @@
             const response = await fetch(`/vendedores/${venda_id}`); // Faz uma requisição para a rota "/vendas/:id" no servidor
             if (response.status === 404) {
               document.getElementById("resultado").innerHTML =
-                "<p>Venda não encontrada</p>";
+                "<p>Vendedor não encontrado</p>";
             } else {
               const data = await response.json(); // Converte a resposta para JSON
               document.getElementById("resultado").innerHTML = `
-                <h2>Detalhes da Venda</h2>
-
+                <h2>Detalhes do Vendedor</h2>
+                <div class="divform">
                   <label for="vendedor_id">ID do Vendedor:</label>
                   <input type="text" id="vendedor_id" value="${data.vendedor_id}" disabled><br>
-
+                  </div>
+                  <div class="divform">
                   <label for="valor">Valor:</label>
                   <input type="text" id="nome" value="${data.nome}" disabled><br>
-
-                  <label for="data_venda">Data da Venda:</label>
-                  <input type="text" id="data_regiao" value="${data.regiao}" disabled><br>
-
+                  </div>
+                  <div class="divform">
+                  <label for="regiao">Região:</label>
+                  <input type="text" id="regiao" value="${data.regiao}" disabled><br>
+                  </div>
                 
                 </form>
 

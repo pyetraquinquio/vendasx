@@ -1,6 +1,6 @@
 body {
     background-color: rgb(207, 169, 242);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     margin: 0%;
 }
 
@@ -10,6 +10,7 @@ header {
     padding: 30px;
     font-size: xx-large;
     font-family: 'Times New Roman', Times, serif;
+    color: aliceblue;
 }
 
 h1 {
@@ -24,8 +25,8 @@ a {
 button {
     background-color: rgb(149, 65, 228);
     padding: 5px;
-    border: 2px solid black;
-    border-radius: 10%;
+    
+    border-radius: 5%;
     font-size: medium;
 }
 
@@ -45,4 +46,61 @@ section {
 
 .art2 {
     margin-left: 8%;
+}
+
+.header {
+    text-align: center;
+    background-color: rgb(149, 65, 228);
+    padding: 10px;
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
+    color: aliceblue;
+}
+
+.div {
+    text-align: center;
+    background-color: rgba(137, 43, 226, 0.401);
+    padding: 20px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+label {
+    font-size: larger;
+}
+
+input {
+    border: 2px solid black;
+}
+
+.button {
+    color: aliceblue;
+}
+
+footer{
+    text-align: center;
+    color: aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: larger;
+    background-color:  rgb(149, 65, 228);
+    margin-top: 8.8%;
+}
+
+.divfooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.form {
+    padding: 5px;
+    font-size: medium;
+}
+
+.divform {
+    display: block;
+  width: 400px;
+  margin: 5px 0;
+  text-align: right;
+  margin-left: 25%;
 }

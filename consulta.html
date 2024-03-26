@@ -4,15 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta Integrada</title>
-    <link rel="stylesheet" type="text/css" href="public/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
+  <header class="header">
     <h1>Consulta Integrada</h1>
+  </header>
+  <br>
+  <br>
+<div class="div">
     <label for="consul">ID da Venda:</label>
     <input type="text" id="consul" />
-    <button onclick="consultaint()">Consulta Int</button>
-    <div id="resultado">
+    <br>
+    <br>
+    <button class="button" onclick="consultaint()">Consultar</button>
+    <br>
+    <br>
+
+    <div class="form" id="resultado">
       <!-- Resultado da consulta será exibido aqui -->
+    </div>
     </div>
     <script>
       async function consultaint() {
@@ -26,26 +37,47 @@
             const response = await fetch(`/consulint/${consul}`); 
             if (response.status === 404) {
               document.getElementById("resultado").innerHTML =
-                "<p>não encontrada</p>";
+                "<p>Consulta Integrada não encontrada</p>";
             } else {
               const data = await response.json(); // Converte a resposta para JSON
               document.getElementById("resultado").innerHTML = `
+    
                 <h2>Detalhes da Consulta Integrada</h2>
                 <form>
+                  <div class="divform">
                 <label for="venda_id">Id da venda:</label>
                   <input type="text" id="venda_id" value="${data.venda_id}" disabled><br>
+                  </div
+                  <br>
+                  <div class="divform">
                   <label for="nomecli">Nome do Cliente:</label>
                   <input type="text" id="nomecli" value="${data.nomecli}" disabled><br>
+                  </div>
+                  
+                  <div class="divform">
                   <label for="nomevend">Nome do Vendedor:</label>
                   <input type="text" id="nomevend" value="${data.nomevend}" disabled><br>
+                  </div>
+                  
+                  <div class="divform">
                   <label for="idade">Idade:</label>
                   <input type="text" id="idade" value="${data.idade}" disabled><br>
+                  </div>
+                  
+                  <div class="divform">
                   <label for="regiao">Região:</label>
                   <input type="text" id="regiao" value="${data.regiao}" disabled><br>
+                  </div>
+                  
+                  <div class="divform">
                   <label for="data_venda">Data da venda:</label>
                   <input type="text" id="data_venda" value="${data.data_venda}" disabled><br>
+                  </div>
+                  
+                  <div class="divform">
                   <label for="valor">Valor:</label>
                   <input type="text" id="valor" value="${data.valor}" disabled><br>
+                  </div>
                 </form>
                 <br>
                 <button ><a href="/">Voltar</a></button>`
